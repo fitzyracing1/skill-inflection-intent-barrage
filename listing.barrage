@@ -1,0 +1,43 @@
+# Skill: Inflection Intent
+
+> A Grok skill that reads speech-like inflection plus action words (keep, work, try, do, want, win) to guess true intent.
+
+## Purpose
+Explain the skill as a listener for how a line is stressed, not only which words appear. Source: fitzyracing1/skill-inflection-intent.
+
+## How it works (plain English)
+1. Read the line.
+2. Notice inflection patterns that feel like speech.
+3. Notice action keywords.
+4. Guess the real ask from both.
+
+## Key ideas
+- Inflection (how the line leans)
+- Action keywords (keep, work, try, do, want, win)
+- True intent (what the speaker is actually asking)
+
+## The actual code
+```
+# source: fitzyracing1/skill-inflection-intent
+inflection = detect(line)
+keys = find_action_words(line)
+intent = guess(inflection, keys)
+```
+
+## Line-by-line translation
+1. detect(line) → “hear how the line leans”
+2. find_action_words(line) → “pick up keep/work/try/do/want/win”
+3. guess(...) → “name the real ask”
+
+## Decisions the program makes
+- If inflection and keywords agree → use that intent
+- If they disagree → prefer the stressed action word
+
+## What a person would notice
+The reply follows the lean of the sentence, not only the dictionary meaning.
+
+## Current status
+Barrage clone.
+
+## Next possible steps
+Open the HTML skill and drop in one stressed line.
